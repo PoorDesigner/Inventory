@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory\Inve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Data", "Inventory.Data\Inventory.Data.csproj", "{0F88AC95-B4A3-40CA-906C-DE817F87AB9D}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InventoryDb", "InventoryDb\InventoryDb.sqlproj", "{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{0F88AC95-B4A3-40CA-906C-DE817F87AB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F88AC95-B4A3-40CA-906C-DE817F87AB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F88AC95-B4A3-40CA-906C-DE817F87AB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA3329F5-8B27-49DC-9C32-66097C0B6ADF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
