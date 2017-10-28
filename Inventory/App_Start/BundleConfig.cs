@@ -10,7 +10,9 @@ namespace Inventory.App_Start
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery-{version}.intellisense.js",
                 "~/Scripts/jquery.*",
-                "~/Scripts/bootstrap.js"
+                "~/Scripts/underscore.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/toastr.js"
                 )
             );
 
@@ -30,6 +32,8 @@ namespace Inventory.App_Start
 
             bundles.Add(new StyleBundle("~/styles/roots").Include(
                  "~/Content/bootstrap.css",
+                 "~/Content/Site.css",
+                 "~/Content/toastr.css",
                  "~/Content/bootstrap-theme.css"));
         }
     }

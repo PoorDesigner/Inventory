@@ -49,5 +49,8 @@ namespace Inventory.Data
         public int AvailableStock { get; set; }
 
         public int TotalStock { get; set; }
+
+        public string Added { get; set; }
+
     }
 }

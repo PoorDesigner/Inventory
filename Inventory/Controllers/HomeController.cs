@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Inventory.Data;
 using Inventory.Models;
 using System.Collections.Generic;
 using System.Configuration;
@@ -29,11 +30,7 @@ namespace Inventory.Controllers
             }
         }
 
-        // GET: Home/Create
-        public ActionResult edit()
-        {
-            return View();
-        }
+        
 
         // POST: Home/Create
         [HttpPost]

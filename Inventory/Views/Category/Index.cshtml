@@ -1,25 +1,30 @@
 ﻿@using System.Web.Optimization
 
-<!-- Button trigger modal -->
-@*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-</button>*@
+<div class="well">
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" id="categoryName" class="form-control" placeholder="Add Category">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button" onclick="addCategory()">Add</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <table id="example" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
     <thead>
         <tr>
 
-            <th>Item Name</th>
-            <th>Category</th>
-            <th>Brand</th>
-            <th>Total Stock</th>
-            <th>Available Stock</th>
+            <th>Category Id</th>
+            <th>Category Name</th>
+            <th>Brands</th>
+            <th>Items</th>
         </tr>
     </thead>
 </table>
-
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -38,9 +43,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 @Scripts.Render("~/scripts/bootstrapdatatables")
 @Styles.Render("~/styles/bootstrapdatatables")
@@ -69,57 +71,49 @@
         table = $('#example').DataTable({
             responsive: true,
             ajax: {
-                "url": "/Home/GetAllItems",
+                "url": "/Category/GetAllCategories",
                 "dataSrc": ""
             },
             columns: [
-
-                 { data: "ItemName" },
+                 { data: "CategoryId", visible: false },
                  { data: "CategoryName" },
-                 { data: "BrandName" },
-                 { data: "TotalStock" },
                  {
                      mRender: function (data, type, row) {
-                         return "<div class=''><div class='_3md1dr'><button class='icons'  onclick= updateStock(-1," + row.ItemId + ")> – </button><span class='countbadge badge'>" + row.AvailableStock + "</span><button class='icons' onclick= updateStock(+1,'" + row.ItemId + "')> + </button></div></div>";
+                         return "<div class=''>Brands</div>";
+                     }
+                 },
+                 {
+                     mRender: function (data, type, row) {
+                         return "<div class=''>Items</div>";
                      }
                  }
             ]
-
         });
-
         new $.fn.dataTable.FixedHeader(table);
 
     });
 
-    function updateStock(incerement, itemId) {
+
+    $("#categoryName").change(function () {
+        console.log("changed");
+    })
+    function addCategory() {
+
+        if ($("#categoryName").val() == "")
+        {
+            alert("enter a category");
+            return;
+        }
         var item = _.find(table.rows().data(), function (val) {
-            return val.ItemId == itemId;
+            return val.CategoryName.toLocaleLowerCase() == $("#categoryName").val().toLocaleLowerCase();
         });
-
-        var datas = {
-            aItem: item,
-            incerement: incerement
-        };
-
-        $.ajax({
-            type: "POST",
-            url: "/upsert_item/upsert_item",
-            data: JSON.stringify(datas),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (msg) {
-                toastr.info(msg);
-                table.ajax.reload();
-            },
-            error: function (data) {
-                toastr.info(data);
-            }
-        });
-
-
+        if (item != null || item != undefined) {
+            toastr.error("Category already exists. Please use search option");
+            return;
+        }
+        $.post("/Category/Insert", { name: $("#categoryName").val() }, function (msg) {
+            toastr.info(msg);
+            table.ajax.reload();
+        })
     }
-    $('#example').on('click', 'tbody td:not(.child), tbody span.dtr-data', function (e) {
-
-
-    });
 </script>

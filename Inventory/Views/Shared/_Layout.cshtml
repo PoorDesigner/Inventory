@@ -1,5 +1,5 @@
 ﻿@using System.Web.Optimization
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +25,15 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#category">Categories</a></li>
-                    <li><a href="#brand">Brands</a></li>
-                    <li class="item"><a href="#">Items</a></li>
+                    <li>
+                        <a href="@Url.Action("Index", "Category")">Categories</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Brand")">Brands</a>
+                    </li>
+                    <li class="item">
+                        <a href="@Url.Action("Index", "Item")">>Items</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
@@ -37,8 +43,8 @@
         @Scripts.Render("~/scripts/roots")
         @Styles.Render("~/styles/roots")
         @RenderBody()
-       
+
     </div>
-    
+
 </body>
 </html>
